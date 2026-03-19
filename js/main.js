@@ -661,3 +661,86 @@ httpPUT();
 httpDELETE();
 probarError404();
 
+// ─────────────────────────────────────────────────────────
+// Funciones de demo visual para index.html
+// Cada función hace una petición HTTP y muestra el resultado
+// ─────────────────────────────────────────────────────────
+ 
+// Helper: muestra el resultado en la caja de demo
+function mostrarResultadoDemo(verbo, codigo, esExito, datos) {
+  const caja = document.getElementById("demo-resultado");
+  if (!caja) return;
+ 
+  // Definir el color según el resultado
+  const colorVerbo = {
+    GET: "success", POST: "primary", PUT: "warning", DELETE: "danger"
+  };
+  const color = colorVerbo[verbo] || "secondary";
+ 
+  caja.innerHTML = `
+    <div class="d-flex align-items-center gap-2 mb-2">
+      <span class="badge bg-${color}">${verbo}</span>
+      <span class="badge bg-${esExito ? "success" : "danger"}">${codigo}</span>
+      <small class="text-muted">${esExito ? "✅ Éxito" : "❌ Error"}</small>
+    </div>
+    <pre class="mb-0 small" style="white-space:pre-wrap">${JSON.stringify(datos, null, 2)}</pre>
+  `;
+  // <pre>: respeta espacios y saltos de línea (ideal para mostrar JSON)
+  // JSON.stringify(datos, null, 2): convierte el objeto a texto con 2 espacios de indentación
+}
+ 
+ 
+async function demoGET() {
+  try {
+    let r = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    let d = await r.json();
+    mostrarResultadoDemo("GET", r.status, r.ok, { id: d.id, titulo: d.title });
+  } catch (e) {
+    mostrarResultadoDemo("GET", "Error de red", false, { error: e.message });
+  }
+}
+ 
+ 
+async function demoPOST() {
+  try {
+    let r = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "Nuevo gadget", body: "Descripción", userId: 1 }),
+    });
+    let d = await r.json();
+    mostrarResultadoDemo("POST", r.status, r.ok, { id_asignado: d.id, titulo: d.title });
+  } catch (e) {
+    mostrarResultadoDemo("POST", "Error de red", false, { error: e.message });
+  }
+}
+ 
+ 
+async function demoPUT() {
+  try {
+    let r = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: 1, title: "Gadget actualizado", body: "Nueva desc", userId: 1 }),
+    });
+    let d = await r.json();
+    mostrarResultadoDemo("PUT", r.status, r.ok, { titulo_nuevo: d.title });
+  } catch (e) {
+    mostrarResultadoDemo("PUT", "Error de red", false, { error: e.message });
+  }
+}
+ 
+ 
+async function demoDELETE() {
+  try {
+    let r = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
+      method: "DELETE",
+    });
+    mostrarResultadoDemo("DELETE", r.status, r.ok, {
+      mensaje: r.ok ? "Recurso borrado exitosamente" : "No se pudo borrar",
+    });
+  } catch (e) {
+    mostrarResultadoDemo("DELETE", "Error de red", false, { error: e.message });
+  }
+}
+

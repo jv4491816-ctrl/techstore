@@ -80,7 +80,7 @@
   </nav>
   <!-- ═══ FIN NAVBAR ═══ -->
  
- 
+  <main>
   <!-- ═══════════════════════════════════════════════ -->
   <!-- HERO — sección principal de bienvenida         -->
   <!-- ═══════════════════════════════════════════════ -->
@@ -147,6 +147,29 @@
  
     </div>
   </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+  <!-- DEMO HTTP — sección interactiva                -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="container my-5">
+    <h3 class="mb-4">🧪 Demo HTTP — prueba los verbos</h3>
+ 
+    <div class="d-flex gap-2 flex-wrap mb-3">
+    <!-- d-flex: flexbox | gap-2: espacio entre botones | flex-wrap: salto de línea -->
+ 
+      <button onclick="demoGET()"    class="btn btn-success">GET — Leer</button>
+      <button onclick="demoPOST()"   class="btn btn-primary">POST — Crear</button>
+      <button onclick="demoPUT()"    class="btn btn-warning">PUT — Actualizar</button>
+      <button onclick="demoDELETE()" class="btn btn-danger" >DELETE — Borrar</button>
+    </div>
+ 
+    <!-- Aquí JavaScript mostrará la respuesta de cada petición -->
+    <div id="demo-resultado" class="p-3 bg-light rounded border">
+      <p class="text-muted mb-0">Haz clic en un botón para ver la respuesta HTTP.</p>
+    </div>
+ 
+  </section>
+  </main>
  
  
   <!-- ↓ Bootstrap JS — SIEMPRE al final del body, antes de tu JS -->
