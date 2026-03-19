@@ -1,0 +1,129 @@
+/* ═══════════════════════════════════════════════════════
+   TECHSTORE — Estilos personalizados
+   Estos estilos se cargan DESPUÉS de Bootstrap,
+   así que puedes sobreescribir cualquier clase de Bootstrap.
+   ═══════════════════════════════════════════════════════ */
+
+ 
+/* ─── Variables CSS ─────────────────────────────────────
+   Define los colores una sola vez aquí.
+   Úsalos en todo el archivo con var(--nombre)
+   Si necesitas cambiar el color principal, solo cambia aquí. */
+:root {
+  --azul-principal: #2563EB;   /* azul medio — botones y acentos */
+  --azul-oscuro:    #1E3A5F;   /* azul oscuro — navbar y títulos */
+  --fondo-pagina:   #F8FAFC;   /* gris muy claro — fondo general */
+  --texto-principal:#1F2937;   /* casi negro — texto general */
+  --sombra-card: 0 2px 8px rgba(0, 0, 0, 0.08); /* sombra suave para cards */
+}
+ 
+/* ─── Reset básico ──────────────────────────────────────
+   Aplica estilos a TODOS los elementos de la página */
+body {
+  background-color: var(--fondo-pagina); /* fondo gris muy claro */
+  color: var(--texto-principal);          /* color de texto por defecto */
+  font-family: "Segoe UI", Arial, sans-serif; /* fuente del sistema */
+}
+ 
+/* ─── Navbar personalizado ──────────────────────────────*/
+.navbar-brand {
+  font-size: 1.3rem;     /* tamaño del nombre TechStore */
+  letter-spacing: 1px;   /* pequeño espacio entre letras */
+}
+ 
+.navbar .nav-link {
+  font-size: 0.95rem;    /* tamaño de los links del menú */
+  transition: color 0.2s; /* animación suave al cambiar color */
+}
+ 
+/* ─── Sección Hero (página de inicio) ───────────────────*/
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--azul-oscuro) 0%,
+    var(--azul-principal) 100%
+  );
+  /* gradient: degradado diagonal de azul oscuro a azul medio */
+  color: white;          /* todo el texto dentro de .hero en blanco */
+  padding: 80px 0;       /* espacio grande arriba y abajo */
+}
+ 
+.hero h1 {
+  color: white;          /* sobreescribe el color del h1 para que sea blanco */
+  font-size: 3rem;       /* título muy grande */
+}
+ 
+.hero .text-muted {
+  color: rgba(255,255,255,0.8) !important;
+  /* !important: fuerza que sea blanco semitransparente */
+  /* Necesitamos !important porque Bootstrap también tiene reglas para .text-muted */
+}
+ 
+/* ─── Cards de productos ─────────────────────────────────*/
+.card {
+  border: 1px solid #E5E7EB;    /* borde muy suave */
+  border-radius: 12px;           /* esquinas redondeadas */
+  box-shadow: var(--sombra-card); /* sombra de la variable */
+  transition: transform 0.2s, box-shadow 0.2s;
+  /* transition: anima transform y shadow cuando cambian */
+}
+ 
+.card:hover {
+  /* :hover = cuando el ratón pasa encima de la tarjeta */
+  transform: translateY(-4px);
+  /* translateY(-4px): mueve la card 4px hacia arriba */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  /* sombra más visible al hacer hover */
+}
+ 
+.card-img-top {
+  font-size: 3.5rem;   /* tamaño del emoji que usamos como imagen */
+  text-align: center;
+  padding: 24px 0 8px;
+}
+ 
+/* ─── Badge de categoría ─────────────────────────────────*/
+.badge-categoria {
+  background-color: var(--azul-principal);
+  color: white;
+  font-size: 0.75rem;    /* texto pequeño */
+  padding: 3px 10px;
+  border-radius: 20px;   /* completamente redondeado (pill) */
+}
+ 
+/* ─── Precio del producto ────────────────────────────────*/
+.precio {
+  font-size: 1.4rem;
+  font-weight: 700;      /* negrita */
+  color: var(--azul-principal);
+}
+ 
+/* ─── Botones de filtro ──────────────────────────────────*/
+.btn-filtro {
+  border: 2px solid var(--azul-principal);
+  color: var(--azul-principal);
+  background: white;
+  border-radius: 20px;   /* botón redondeado */
+  padding: 5px 16px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+ 
+.btn-filtro:hover,
+.btn-filtro.activo {
+  /* .activo: clase que JavaScript agrega al botón seleccionado */
+  background: var(--azul-principal);
+  color: white;
+}
+ 
+/* ─── Footer ─────────────────────────────────────────────*/
+footer {
+  background-color: var(--azul-oscuro);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 0.9rem;
+}
