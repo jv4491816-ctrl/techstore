@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Es el momento seguro para buscar elementos del DOM
  
   crearFiltros();          // crea los botones de categoría
-  mostrarProductos(productos); // muestra todos los productos
+  cargarProductosExternos(); // muestra todos los productos
   iniciarFormulario();     // activa el formulario de contacto
  
     console.log("TechStore listo ✅");
