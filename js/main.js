@@ -304,4 +304,5 @@ document.addEventListener("DOMContentLoaded", function() {
   mostrarProductos(productos); // muestra todos los productos
   iniciarFormulario();     // activa el formulario de contacto
  
-  console.log("TechStore listo ✅
+    console.log("TechStore listo ✅");
+});
