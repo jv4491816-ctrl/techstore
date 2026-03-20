@@ -118,12 +118,11 @@ body {
   color: white;
 }
  
-/* ─── Footer ─────────────────────────────────────────────*/
-footer {
-  background-color: var(--azul-oscuro);
-  color: rgba(255,255,255,0.7);
-  text-align: center;
-  padding: 20px;
-  margin-top: 60px;
-  font-size: 0.9rem;
-}
+/* Simplemente elimina
+   toda la regla footer { }
+   del archivo estilos.css */
+ 
+/* Si en el futuro quieres
+   agregar un footer, primero
+   ponlo en el HTML y luego
+   agrega la regla CSS */
